@@ -1,7 +1,7 @@
 package your.package.wxapi;
 
 import org.apache.cordova.CordovaActivity;
-import com.qq.cordova.wechat.Wechat;
+import com.quwan.plugins.Plugins;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.mm.sdk.modelbase.BaseReq;
@@ -33,16 +33,16 @@ public class WXEntryActivity extends CordovaActivity implements IWXAPIEventHandl
 	public void onResp(BaseResp resp) {
 		switch (resp.errCode) {
 		case BaseResp.ErrCode.ERR_OK:
-			Wechat.currentCallbackContext.success("分享成功");
+			Plugins.currentCallbackContext.success("分享成功");
 			break;
 		case BaseResp.ErrCode.ERR_USER_CANCEL:
-			Wechat.currentCallbackContext.success("发送取消");
+			Plugins.currentCallbackContext.success("发送取消");
 			break;
 		case BaseResp.ErrCode.ERR_AUTH_DENIED:
-			Wechat.currentCallbackContext.success("发送被拒绝");
+			Plugins.currentCallbackContext.success("发送被拒绝");
 			break;
 		default:
-			Wechat.currentCallbackContext.success("发送返回");
+			Plugins.currentCallbackContext.success("发送返回");
 			break;
 		}
 		finish();
