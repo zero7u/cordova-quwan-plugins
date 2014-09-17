@@ -24,5 +24,6 @@
             </feature>
         </config-file>
         <source-file src="src/android/Plugins.java" target-dir="src/com/quwan/plugins/" />
+        <source-file src="src/android/WXEntryActivity.java" target-dir="src/com/quwan/plugins/" />
     </platform>
 </plugin>
