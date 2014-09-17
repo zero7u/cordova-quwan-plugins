@@ -1,4 +1,4 @@
-package com.qq.cordova.wechat;
+package com.quwan.plugins;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
