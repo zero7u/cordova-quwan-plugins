@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:rim="http://www.blackberry.com/ns/widgets"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.quwan.plugins"
+    version="0.4">
+    <name>plugins</name>
+    <description>A cordova plugin of quwan games, a JS bridge of android SDK</description>
+    <license>MIT</license>
+    <keywords>cordova,plugins,bridge,android,quwan</keywords>
+    <repo>https://github.com/zero7u/cordova-quwan-plugins.git</repo>
+    <issue>https://github.com/zero7u/cordova-quwan-plugins/issues</issue>
+
+    <js-module src="www/plugins.js" name="plugins">
+        <clobbers target="plugins" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="config.xml" parent="/*">
+            <feature name="Plugins">
+                <param name="android-package" value="com.quwan.plugins.Plugins"/>
+            </feature>
+        </config-file>
+        <source-file src="src/android/Plugins.java" target-dir="src/com/quwan/plugins/" />
+    </platform>
+</plugin>
