@@ -18,6 +18,6 @@ module.exports = {
     },
 
     wechatShare: function (message, onSuccess, onError) {
-        exec(onSuccess, onError, "Plugins", "wechatShare", [message]);
+        exec(onSuccess, onError, "Plugins", "share", [message]);
     }
 };
