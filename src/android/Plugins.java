@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Message;
 
 import com.tencent.mm.sdk.modelmsg.SendMessageToWX;
 import com.tencent.mm.sdk.modelmsg.WXMediaMessage;
@@ -49,7 +50,7 @@ public class Plugins extends CordovaPlugin {
 
 	private IWXAPI wxAPI;
 	public static CallbackContext currentCallbackContext;
-
+	
 	@Override
 	public boolean execute(String action, JSONArray args,
 			CallbackContext callbackContext) throws JSONException {
@@ -57,6 +58,10 @@ public class Plugins extends CordovaPlugin {
 		if (action.equals("share")) {
 			// sharing
 			return share(args, callbackContext);
+		} else if (action.equals("showBannerAd")) {
+			return showBannerAd(callbackContext);
+		} else if (action.equals("showInsertAd")) {
+			return showInsertAd(callbackContext);
 		}
 
 		return super.execute(action, args, callbackContext);
@@ -184,5 +189,23 @@ public class Plugins extends CordovaPlugin {
 		wxMediaMessage.mediaObject = mediaObject;
 
 		return wxMediaMessage;
+	}
+	
+	public boolean showBannerAd(CallbackContext callbackContext) {
+		YourActivity activity = (YourActivity) cordova.getActivity();
+		Message msg = new Message();
+		msg.what = YourActivity.BANNER_AD;
+		activity.handler.sendMessage(msg);
+		callbackContext.success();
+		return true;
+	}
+	
+	public boolean showInsertAd(CallbackContext callbackContext) {
+		YourActivity activity = (YourActivity) cordova.getActivity();
+		Message msg = new Message();
+		msg.what = YourActivity.INSERT_AD;
+		activity.handler.sendMessage(msg);
+		callbackContext.success();
+		return true;
 	}
 }
